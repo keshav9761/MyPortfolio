@@ -37,7 +37,7 @@ const AnimatedTypography = () => {
                     }
                 }}
             >
-                Keshav Tomar
+                Keshav Tomars
             </Typography>
         </motion.div>
     );
