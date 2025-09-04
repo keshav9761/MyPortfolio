@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import { 
-  Container, 
-  Typography, 
-  Grid, 
-  Box, 
-  TextField, 
-  Button, 
-  Card, 
-  CardContent, 
+import {
+  Container,
+  Typography,
+  Grid,
+  Box,
+  TextField,
+  Button,
+  Card,
+  CardContent,
   Link,
   Snackbar,
   Alert,
-  CircularProgress
+  CircularProgress,
+  styled
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Email, GitHub, LinkedIn, LocationOn, Send } from '@mui/icons-material';
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with your credentials
-// You need to get these from https://www.emailjs.com/
 const SERVICE_ID = 'service_3oc03xm';
 const TEMPLATE_ID = 'template_uis4n9s';
 const PUBLIC_KEY = '6PPsqNMKSAc4ZBfHC';
@@ -37,12 +37,13 @@ const Contact = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log(">>>>>>.", formData)
 
     try {
       // Send email using EmailJS
@@ -52,9 +53,7 @@ const Contact = () => {
         {
           from_name: formData.name,
           from_email: formData.email,
-          to_name: 'Keshav Tomar',
           message: formData.message,
-          reply_to: formData.email
         },
         PUBLIC_KEY
       );
@@ -108,7 +107,24 @@ const Contact = () => {
       opacity: 1
     }
   };
-
+  const FormDetailWrapper = styled('form')({
+    mb: 2,
+    '& .MuiOutlinedInput-root': {
+      color: 'white',
+      '& fieldset': {
+        borderColor: 'rgba(255, 255, 255, 0.3)',
+      },
+      '&:hover fieldset': {
+        borderColor: 'primary.main',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'primary.main',
+      },
+    },
+    '& .MuiInputLabel-root': {
+      color: 'rgba(255, 255, 255, 0.7)',
+    }
+  })
   return (
     <Container id="contact" sx={{ py: 8, scrollMarginTop: '70px' }}>
       <motion.div
@@ -117,11 +133,11 @@ const Contact = () => {
         viewport={{ once: true }}
         transition={{ duration: 1.5 }}
       >
-        <Typography 
-          variant="h2" 
-          align="center" 
-          gutterBottom 
-          sx={{ 
+        <Typography
+          variant="h2"
+          align="center"
+          gutterBottom
+          sx={{
             fontWeight: 700,
             background: 'linear-gradient(45deg, #6366F1 30%, #EC4899 90%)',
             backgroundClip: 'text',
@@ -145,8 +161,8 @@ const Contact = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <Card sx={{ 
-              p: 3, 
+            <Card sx={{
+              p: 3,
               height: '100%',
               background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
               border: '1px solid rgba(255, 255, 255, 0.1)'
@@ -155,20 +171,20 @@ const Contact = () => {
                 <Typography variant="h4" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
                   Contact Information
                 </Typography>
-                
+
                 <motion.div variants={itemVariants}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <Email sx={{ mr: 2, color: 'primary.main', fontSize: 30 }} />
                     <Box>
                       <Typography variant="body1" sx={{ fontWeight: 600 }}>Email</Typography>
-                      <Link 
-                        href="mailto:keshavtomar53@gmail.com" 
+                      <Link
+                        href="mailto:keshavtomar53@gmail.com"
                         color="textSecondary"
-                        sx={{ 
-                          '&:hover': { 
+                        sx={{
+                          '&:hover': {
                             color: 'primary.main',
-                            textDecoration: 'none' 
-                          } 
+                            textDecoration: 'none'
+                          }
                         }}
                       >
                         keshavtomar53@gmail.com
@@ -176,21 +192,21 @@ const Contact = () => {
                     </Box>
                   </Box>
                 </motion.div>
-                
+
                 <motion.div variants={itemVariants}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <GitHub sx={{ mr: 2, color: 'primary.main', fontSize: 30 }} />
                     <Box>
                       <Typography variant="body1" sx={{ fontWeight: 600 }}>GitHub</Typography>
-                      <Link 
-                        href="https://github.com/keshav9761" 
-                        target="_blank" 
+                      <Link
+                        href="https://github.com/keshav9761"
+                        target="_blank"
                         color="textSecondary"
-                        sx={{ 
-                          '&:hover': { 
+                        sx={{
+                          '&:hover': {
                             color: 'primary.main',
-                            textDecoration: 'none' 
-                          } 
+                            textDecoration: 'none'
+                          }
                         }}
                       >
                         github.com/keshav9761
@@ -198,21 +214,21 @@ const Contact = () => {
                     </Box>
                   </Box>
                 </motion.div>
-                
+
                 <motion.div variants={itemVariants}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <LinkedIn sx={{ mr: 2, color: 'primary.main', fontSize: 30 }} />
                     <Box>
                       <Typography variant="body1" sx={{ fontWeight: 600 }}>LinkedIn</Typography>
-                      <Link 
-                        href="https://www.linkedin.com/in/keshav-tomar-039b91272" 
+                      <Link
+                        href="https://www.linkedin.com/in/keshav-tomar-039b91272"
                         target="_blank"
                         color="textSecondary"
-                        sx={{ 
-                          '&:hover': { 
+                        sx={{
+                          '&:hover': {
                             color: 'primary.main',
-                            textDecoration: 'none' 
-                          } 
+                            textDecoration: 'none'
+                          }
                         }}
                       >
                         linkedin.com/in/keshav-tomar
@@ -220,7 +236,7 @@ const Contact = () => {
                     </Box>
                   </Box>
                 </motion.div>
-                
+
                 <motion.div variants={itemVariants}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <LocationOn sx={{ mr: 2, color: 'primary.main', fontSize: 30 }} />
@@ -244,7 +260,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Card sx={{ 
+            <Card sx={{
               p: 3,
               background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
               border: '1px solid rgba(255, 255, 255, 0.1)'
@@ -253,37 +269,19 @@ const Contact = () => {
                 <Typography variant="h4" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
                   Send Me a Message
                 </Typography>
-                
-                <form onSubmit={handleSubmit}>
+                {/* <FormDetailWrapper> */}
+                <FormDetailWrapper onSubmit={handleSubmit}>
                   <TextField
                     fullWidth
+                    margin="normal"
+                    variant="outlined"
                     label="Your Name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    margin="normal"
                     required
-                    variant="outlined"
-                    sx={{ 
-                      mb: 2,
-                      '& .MuiOutlinedInput-root': {
-                        color: 'white',
-                        '& fieldset': {
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                        },
-                        '&:hover fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                        '&.Mui-focused fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                      },
-                      '& .MuiInputLabel-root': {
-                        color: 'rgba(255, 255, 255, 0.7)',
-                      },
-                    }}
                   />
-                  
+
                   <TextField
                     fullWidth
                     label="Your Email"
@@ -294,26 +292,8 @@ const Contact = () => {
                     margin="normal"
                     required
                     variant="outlined"
-                    sx={{ 
-                      mb: 2,
-                      '& .MuiOutlinedInput-root': {
-                        color: 'white',
-                        '& fieldset': {
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                        },
-                        '&:hover fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                        '&.Mui-focused fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                      },
-                      '& .MuiInputLabel-root': {
-                        color: 'rgba(255, 255, 255, 0.7)',
-                      },
-                    }}
                   />
-                  
+
                   <TextField
                     fullWidth
                     label="Your Message"
@@ -325,34 +305,16 @@ const Contact = () => {
                     multiline
                     rows={4}
                     variant="outlined"
-                    sx={{ 
-                      mb: 3,
-                      '& .MuiOutlinedInput-root': {
-                        color: 'white',
-                        '& fieldset': {
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                        },
-                        '&:hover fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                        '&.Mui-focused fieldset': {
-                          borderColor: 'primary.main',
-                        },
-                      },
-                      '& .MuiInputLabel-root': {
-                        color: 'rgba(255, 255, 255, 0.7)',
-                      },
-                    }}
                   />
-                  
+
                   <Box sx={{ mt: 3 }}>
-                    <Button 
-                      type="submit" 
-                      variant="contained" 
+                    <Button
+                      type="submit"
+                      variant="contained"
                       size="large"
                       disabled={loading}
                       startIcon={loading ? <CircularProgress size={20} /> : <Send />}
-                      sx={{ 
+                      sx={{
                         px: 4,
                         py: 1.5,
                         background: 'linear-gradient(45deg, #6366F1 30%, #EC4899 90%)',
@@ -370,22 +332,24 @@ const Contact = () => {
                       {loading ? 'Sending...' : 'Send Message'}
                     </Button>
                   </Box>
-                </form>
+                </FormDetailWrapper>
+                {/* </FormDetailWrapper> */}
+
               </CardContent>
             </Card>
           </motion.div>
         </Grid>
       </Grid>
 
-      <Snackbar 
-        open={snackbar.open} 
-        autoHideDuration={6000} 
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert 
-          onClose={handleCloseSnackbar} 
-          severity={snackbar.severity} 
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbar.severity}
           sx={{ width: '100%' }}
         >
           {snackbar.message}

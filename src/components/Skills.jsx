@@ -1,7 +1,11 @@
 import React from 'react';
-import { Container, Typography, Grid, Box, LinearProgress } from '@mui/material';
+import { Container, Typography, Grid, Box, LinearProgress, styled } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Code, Storage, Build, Cloud } from '@mui/icons-material';
+
+const BoxWrapper=styled('Box')({
+  
+})
 
 const Skills = () => {
   const skills = [
@@ -20,18 +24,6 @@ const Skills = () => {
   ];
 
   const categories = [...new Set(skills.map(skill => skill.category))];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },

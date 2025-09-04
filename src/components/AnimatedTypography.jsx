@@ -1,10 +1,11 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const AnimatedTypography = () => {
+    const name = "Keshav Tomar".split('')
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -37,7 +38,18 @@ const AnimatedTypography = () => {
                     }
                 }}
             >
-                Keshav Tomar
+                {name.map((char, i) => (
+                    <motion.div
+                        key={i}
+                        style={{ display: "inline-block"}}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: i * 0.1 }}
+                    >
+                        {char === " " ? "\u00A0" : char} {/* space handle */}
+                    </motion.div>
+                ))}
             </Typography>
         </motion.div>
     );

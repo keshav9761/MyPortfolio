@@ -1,9 +1,11 @@
 import React from 'react';
-import { Container, Typography, Button, Box } from '@mui/material';
+import { Container, Typography, Button, Box, styled } from '@mui/material';
 import { Download } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import AnimatedTypography from './AnimatedTypography';
+
 const Hero = () => {
+
     return (
         <Box
             id="home"
@@ -29,20 +31,6 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    {/* <Typography 
-            variant="h1" 
-            gutterBottom 
-            sx={{
-              background: 'linear-gradient(45deg, #6366F1 30%, #EC4899 90%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-              fontWeight: 700,
-              transition:'ease-in-out'
-            }}
-          >
-            Keshav Tomar
-          </Typography> */}
                     <AnimatedTypography />
                     <Typography
                         variant="h4"
@@ -65,7 +53,7 @@ const Hero = () => {
                         Experienced React.js Developer with 1.5+ years of hands-on expertise in creating responsive
                         and high-performance web applications. Committed to delivering clean, user-centered solutions.
                     </Typography>
-                    <Box sx={{textAlign:'center'}}>
+                    <Box sx={{ textAlign: 'center' }}>
                         <Button
                             variant="contained"
                             size="large"

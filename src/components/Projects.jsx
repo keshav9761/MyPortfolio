@@ -1,23 +1,24 @@
 import React from 'react';
-import { 
-  Container, 
-  Typography, 
-  Grid, 
-  Card, 
-  CardContent, 
-  CardActions, 
-  Button, 
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  CardActions,
+  Button,
   Chip,
   Box,
-  IconButton
+  IconButton,
+  styled
 } from '@mui/material';
-import { 
-  OpenInNew, 
+import {
+  OpenInNew,
   GitHub,
-  Visibility 
+  Visibility
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
-
+import CardWrapper from './AnimatedCard'
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -37,6 +38,7 @@ const itemVariants = {
     opacity: 1
   }
 };
+
 
 const Projects = () => {
   const projects = [
@@ -82,14 +84,13 @@ const Projects = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7 }}
       >
-        <Typography  variant="h2" align="center" gutterBottom >
+        <Typography variant="h2" align="center" gutterBottom >
           Featured Projects
         </Typography>
-        <Typography 
-          variant="h6" 
-          align="center" 
-          color="textSecondary" 
-          paragraph 
+        <Typography
+          variant="h6"
+          align="center"
+          color="textSecondary"
           sx={{ maxWidth: '600px', mx: 'auto', mb: 6 }}
         >
           Here are some of my recent projects that showcase my skills and experience
@@ -104,30 +105,14 @@ const Projects = () => {
       >
         <Grid container spacing={4}>
           {projects.map((project, index) => (
-            <Grid item xs={12} md={6} key={index}>
+            <Grid size={{ xs: 12, md: 6 }} key={index}>
               <motion.div variants={itemVariants}>
-                <Card 
-                  sx={{ 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    transition: 'all 0.3s ease-in-out',
-                    background: 'linear-gradient(145deg, #1E293B 0%, #0F172A 100%)',
-                    border: '1px solid',
-                    borderColor: 'rgba(255, 255, 255, 0.1)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 12px 40px rgba(99, 102, 241, 0.2)',
-                      borderColor: 'rgba(99, 102, 241, 0.3)',
-                    }
-                  }}
-                >
+                <CardWrapper>
                   <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                    <Typography 
-                      variant="h5" 
-                      gutterBottom 
-                      sx={{ 
+                    <Typography
+                      variant="h5"
+                      gutterBottom
+                      sx={{
                         fontWeight: 600,
                         color: 'primary.main',
                         mb: 2
@@ -135,17 +120,16 @@ const Projects = () => {
                     >
                       {project.title}
                     </Typography>
-                    <Typography 
-                      variant="body2" 
-                      color="textSecondary" 
-                      paragraph 
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
                       sx={{ mb: 2, lineHeight: 1.6 }}
                     >
                       {project.description}
                     </Typography>
                     <Box sx={{ mb: 2 }}>
-                      <Typography 
-                        variant="subtitle2" 
+                      <Typography
+                        variant="subtitle2"
                         sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}
                       >
                         My Role:
@@ -155,26 +139,26 @@ const Projects = () => {
                       </Typography>
                     </Box>
                     <Box>
-                      <Typography 
-                        variant="subtitle2" 
+                      <Typography
+                        variant="subtitle2"
                         sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}
                       >
                         Technologies Used:
                       </Typography>
                       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                         {project.technologies.map((tech, i) => (
-                          <Chip 
-                            key={i} 
-                            label={tech} 
-                            size="small" 
-                            sx={{ 
+                          <Chip
+                            key={i}
+                            label={tech}
+                            size="small"
+                            sx={{
                               background: 'linear-gradient(45deg, rgba(99, 102, 241, 0.15) 30%, rgba(236, 72, 153, 0.15) 90%)',
                               color: 'primary.light',
                               fontWeight: 500,
                               '&:hover': {
                                 background: 'linear-gradient(45deg, rgba(99, 102, 241, 0.25) 30%, rgba(236, 72, 153, 0.25) 90%)',
                               }
-                            }} 
+                            }}
                           />
                         ))}
                       </Box>
@@ -218,7 +202,7 @@ const Projects = () => {
                       </IconButton>
                     )} */}
                   </CardActions>
-                </Card>
+                </CardWrapper>
               </motion.div>
             </Grid>
           ))}

@@ -41,7 +41,7 @@ const About = () => {
       </motion.div>
 
       <Grid container spacing={4} sx={{ mt: 2 }}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }} >
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -101,7 +101,7 @@ const About = () => {
           </motion.div>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{xs:12,md:6}}>
           <motion.div
             variants={containerVariants}
             initial="hidden"
